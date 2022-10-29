@@ -4,12 +4,16 @@ onready var sprite = $Sprite
 onready var chosen_bag_scene = preload("res://scenes/bank/chosen_bag.tscn")
 onready var chosen_bag = $"../../chosen_bag"
 
+enum TYPES {AB_NEG, AB_POS, A_NEG, A_POS, B_NEG, B_POS, O_NEG, O_POS}
+export(TYPES) var TYPE
+
 func _input(event):
 	if event is InputEventMouseButton:
 		if is_clicked_on(event.position) and event.pressed:
 			if chosen_bag.get_child_count() > 0:
 				chosen_bag.get_child(0).queue_free()
 			var bag = chosen_bag_scene.instance()
+			bag.set_type(TYPE)
 			chosen_bag.add_child(bag)
 			bag.global_position = get_global_mouse_position()
 			scale = Vector2(0.9, 0.9)

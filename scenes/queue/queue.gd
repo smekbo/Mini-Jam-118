@@ -28,6 +28,7 @@ func initialize():
 	init_depth()
 	CUSTOMERS = get_children()
 	CUSTOMERS[1].current_customer = true
+	CUSTOMERS[1].show_order()
 
 func _process(delta):
 	if advancing:
@@ -91,12 +92,12 @@ func move_depth(delta):
 		print("DONE ADVANCING")
 		CUSTOMERS[0].queue_free()
 		CUSTOMERS[1].current_customer = true
+		CUSTOMERS[1].show_order()
 		advancing = false
 		customer_move_timer = 0
 	customer_move_timer += delta
 	
 func init_distribution():
-	randomize()
 	CUSTOMERS = get_children()
 	for customer in CUSTOMERS:
 		customer.position.x += randi() % MAX_CUSTOMER_SPREAD_X

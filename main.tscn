@@ -31,3 +31,6 @@ script = ExtResource( 4 )
 [node name="queue" parent="." instance=ExtResource( 6 )]
 position = Vector2( 560, 320 )
 z_index = -1
+
+[node name="order_holder" type="Node2D" parent="."]
+position = Vector2( 336, 304 )
