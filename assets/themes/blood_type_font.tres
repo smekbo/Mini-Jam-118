@@ -1,0 +1,28 @@
+[gd_resource type="Theme" load_steps=3 format=2]
+
+[ext_resource path="res://assets/fonts/creepy_pumkin/CreepyPumkin.ttf" type="DynamicFontData" id=1]
+
+[sub_resource type="DynamicFont" id=1]
+size = 100
+extra_spacing_top = -21
+extra_spacing_bottom = -14
+font_data = ExtResource( 1 )
+
+[resource]
+RichTextLabel/colors/default_color = Color( 0.368627, 0.0784314, 0.0784314, 1 )
+RichTextLabel/colors/font_color_selected = Color( 0.49, 0.49, 0.49, 1 )
+RichTextLabel/colors/font_color_shadow = Color( 0, 0, 0, 0 )
+RichTextLabel/colors/selection_color = Color( 0.1, 0.1, 1, 0.8 )
+RichTextLabel/constants/line_separation = 1
+RichTextLabel/constants/shadow_as_outline = 0
+RichTextLabel/constants/shadow_offset_x = 1
+RichTextLabel/constants/shadow_offset_y = 1
+RichTextLabel/constants/table_hseparation = 3
+RichTextLabel/constants/table_vseparation = 3
+RichTextLabel/fonts/bold_font = SubResource( 1 )
+RichTextLabel/fonts/bold_italics_font = SubResource( 1 )
+RichTextLabel/fonts/italics_font = SubResource( 1 )
+RichTextLabel/fonts/mono_font = SubResource( 1 )
+RichTextLabel/fonts/normal_font = SubResource( 1 )
+RichTextLabel/styles/focus = null
+RichTextLabel/styles/normal = null

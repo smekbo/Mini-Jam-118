@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/window/window.gd" type="Script" id=1]
+
+[sub_resource type="QuadMesh" id=1]
+
+[node name="window" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+modulate = Color( 0.811765, 0.882353, 0.894118, 1 )
+position = Vector2( 500, 12 )
+scale = Vector2( 1000, 24 )
+mesh = SubResource( 1 )
+
+[node name="MeshInstance2D4" type="MeshInstance2D" parent="."]
+modulate = Color( 0.811765, 0.882353, 0.894118, 1 )
+position = Vector2( 596, 524 )
+scale = Vector2( 808, 152 )
+mesh = SubResource( 1 )
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="."]
+modulate = Color( 0.811765, 0.882353, 0.894118, 1 )
+position = Vector2( 96, 312 )
+scale = Vector2( 192, 576 )
+mesh = SubResource( 1 )
+
+[node name="MeshInstance2D3" type="MeshInstance2D" parent="."]
+modulate = Color( 0.811765, 0.882353, 0.894118, 1 )
+position = Vector2( 988, 236 )
+scale = Vector2( 24, 424 )
+mesh = SubResource( 1 )
