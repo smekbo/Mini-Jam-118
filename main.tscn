@@ -16,12 +16,12 @@ script = ExtResource( 7 )
 [node name="bank" parent="." instance=ExtResource( 2 )]
 position = Vector2( -1000, 0 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="camera" type="Camera2D" parent="."]
 position = Vector2( 504, 304 )
 current = true
 
-[node name="Node2D" parent="Camera2D" instance=ExtResource( 5 )]
-position = Vector2( 8, -264 )
+[node name="hud" parent="camera" instance=ExtResource( 5 )]
+position = Vector2( -8, -280 )
 
 [node name="change-view" type="Sprite" parent="."]
 position = Vector2( 96, 296 )

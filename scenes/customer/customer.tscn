@@ -1,10 +1,12 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://scenes/customer/customer_ps.png" type="Texture" id=1]
 [ext_resource path="res://scenes/customer/customer.gd" type="Script" id=2]
 [ext_resource path="res://scenes/customer/blood_drop.png" type="Texture" id=3]
 [ext_resource path="res://scenes/customer/order.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/explosion_3_40_128.webp" type="Texture" id=5]
+[ext_resource path="res://scenes/customer/impact_01.mp3" type="AudioStream" id=6]
+[ext_resource path="res://scenes/customer/Step_blood_2.mp3" type="AudioStream" id=7]
 
 [sub_resource type="AtlasTexture" id=6]
 flags = 4
@@ -266,6 +268,42 @@ tracks/4/keys = {
 "update": 0,
 "values": [ true ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("sfx/explode:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("CPUParticles2D:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("sfx/eat:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "die"
@@ -343,6 +381,60 @@ tracks/5/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("sfx/explode:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=45]
+resource_name = "eat"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("CPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "verify_order"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("sfx/eat:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "happy"
@@ -367,6 +459,113 @@ tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "advance_line"
+} ]
+}
+
+[sub_resource type="Animation" id=48]
+resource_name = "impatient"
+length = 2.255
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -20, 0 ), Vector2( 20, 0 ), Vector2( -20, 0 ), Vector2( 20, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 150, -100 ), Vector2( 300, 0 ), Vector2( 450, -100 ), Vector2( 600, 0 ), Vector2( 750, -100 ), Vector2( 900, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0.423529, 0.423529, 1 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 2.2, 2.201, 2.202 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "patient_timeout"
+}, {
+"args": [  ],
+"method": "patience_timeout"
+}, {
+"args": [  ],
+"method": "advance_line"
+} ]
+}
+
+[sub_resource type="Animation" id=47]
+resource_name = "neutral"
+length = 0.5
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "advance_line"
+} ]
+}
+
+[sub_resource type="Animation" id=46]
+resource_name = "sick"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 10, 5 ), Vector2( 0, 10 ), Vector2( 10, 15 ), Vector2( 0, 20 ), Vector2( 10, 20 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.364706, 0.65098, 0.360784, 1 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -409,7 +608,11 @@ playing = true
 [node name="animation" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 1 )
 anims/die = SubResource( 3 )
+anims/eat = SubResource( 45 )
 anims/happy = SubResource( 4 )
+anims/impatient = SubResource( 48 )
+anims/neutral = SubResource( 47 )
+anims/sick = SubResource( 46 )
 anims/upset = SubResource( 5 )
 anims/walk_forward = SubResource( 2 )
 
@@ -428,3 +631,11 @@ scale_amount = 0.1
 
 [node name="order" parent="." instance=ExtResource( 4 )]
 position = Vector2( -424, 88 )
+
+[node name="sfx" type="Node" parent="."]
+
+[node name="explode" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource( 6 )
+
+[node name="eat" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource( 7 )

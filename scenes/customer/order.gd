@@ -26,11 +26,6 @@ var TITLE
 onready var seal = $pivot/seal
 onready var photo = $pivot/photo
 
-func _ready():
-	for x in BLOOD_TYPES.size():
-		print(x)
-
-
 func set_photo(texture):
 	photo.texture = texture
 
@@ -42,7 +37,6 @@ func randomize_order_data():
 	
 func set_order_visuals():
 	TITLE_LABEL.text = TITLE
-	print("TYPE %s" % get_type_string())
 	BLOOD_TYPE_LABEL.text = get_type_string()
 	INSTRUCTION_LABEL.text = INSTRUCTION
 	

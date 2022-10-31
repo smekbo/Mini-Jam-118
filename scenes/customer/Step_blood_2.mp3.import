@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Step_blood_2.mp3-3f0beb2af2ab69f1981cae96ebc730c7.mp3str"
+
+[deps]
+
+source_file="res://scenes/customer/Step_blood_2.mp3"
+dest_files=[ "res://.import/Step_blood_2.mp3-3f0beb2af2ab69f1981cae96ebc730c7.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

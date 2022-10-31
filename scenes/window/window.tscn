@@ -1,8 +1,91 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/window/window.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/creepy_pumkin/CreepyPumkin.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/fonts/creepy_pumkin/CreepyPumkin.ttf" type="DynamicFontData" id=3]
 
 [sub_resource type="QuadMesh" id=1]
+
+[sub_resource type="DynamicFont" id=5]
+size = 50
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 30
+font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("shutter-pivot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "close_shutter"
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "shutter_closed"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("shutter-pivot:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 0.6, 0.8, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -1000 ), Vector2( 0, 0 ), Vector2( 0, -96 ), Vector2( 0, 0 ), Vector2( 0, -64 ), Vector2( 0, -32 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "open_shutter"
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "shutter_opened"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("shutter-pivot:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -72 ), Vector2( 0, -552 ) ]
+}
 
 [node name="window" type="Node2D"]
 script = ExtResource( 1 )
@@ -19,6 +102,51 @@ position = Vector2( 604, 532 )
 scale = Vector2( 824, 168 )
 mesh = SubResource( 1 )
 
+[node name="shutter-pivot" type="Node2D" parent="."]
+
+[node name="shutter" type="MeshInstance2D" parent="shutter-pivot"]
+modulate = Color( 0.811765, 0.882353, 0.894118, 1 )
+position = Vector2( 584, 236 )
+scale = Vector2( 784, 504 )
+mesh = SubResource( 1 )
+
+[node name="game_over" type="Node2D" parent="shutter-pivot"]
+visible = false
+
+[node name="text" type="Label" parent="shutter-pivot/game_over"]
+margin_left = 496.0
+margin_top = 160.0
+margin_right = 840.0
+margin_bottom = 259.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "GAME OVER"
+
+[node name="score" type="Label" parent="shutter-pivot/game_over"]
+margin_left = 496.0
+margin_top = 208.0
+margin_right = 840.0
+margin_bottom = 307.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "SCORE - 12"
+
+[node name="restart" type="Button" parent="shutter-pivot/game_over"]
+margin_left = 472.0
+margin_top = 272.0
+margin_right = 576.0
+margin_bottom = 328.0
+custom_fonts/font = SubResource( 6 )
+text = "Restart"
+
+[node name="title" type="Button" parent="shutter-pivot/game_over"]
+margin_left = 608.0
+margin_top = 272.0
+margin_right = 712.0
+margin_bottom = 328.0
+custom_fonts/font = SubResource( 6 )
+text = "Title"
+
 [node name="MeshInstance2D2" type="MeshInstance2D" parent="."]
 modulate = Color( 0.811765, 0.882353, 0.894118, 1 )
 position = Vector2( 96, 320 )
@@ -30,3 +158,11 @@ modulate = Color( 0.811765, 0.882353, 0.894118, 1 )
 position = Vector2( 996, 236 )
 scale = Vector2( 40, 424 )
 mesh = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 2 )
+anims/close_shutter = SubResource( 4 )
+anims/open_shutter = SubResource( 3 )
+
+[connection signal="pressed" from="shutter-pivot/game_over/restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="shutter-pivot/game_over/title" to="." method="_on_title_pressed"]

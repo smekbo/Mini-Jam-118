@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/impact_01.mp3-5f09e0201574af5b78ed02d583a77e0f.mp3str"
+
+[deps]
+
+source_file="res://scenes/customer/impact_01.mp3"
+dest_files=[ "res://.import/impact_01.mp3-5f09e0201574af5b78ed02d583a77e0f.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

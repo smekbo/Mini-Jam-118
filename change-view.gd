@@ -2,7 +2,7 @@ extends Sprite
 
 const SWITCH_SPEED = 10
 
-onready var camera = $"../Camera2D"
+onready var camera = $"../camera"
 enum VIEW {WINDOW, BANK}
 export(VIEW) var current_view
 

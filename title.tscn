@@ -1,0 +1,165 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://assets/fonts/creepy_pumkin/CreepyPumkin.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://title.gd" type="Script" id=3]
+[ext_resource path="res://tutorial.png" type="Texture" id=4]
+[ext_resource path="res://credits.png" type="Texture" id=5]
+[ext_resource path="res://assets/credits/vicar/video_00001.png" type="Texture" id=6]
+[ext_resource path="res://assets/credits/vicar/video_00002.png" type="Texture" id=7]
+[ext_resource path="res://assets/credits/vicar/video_00004.png" type="Texture" id=8]
+[ext_resource path="res://assets/credits/vicar/video_00003.png" type="Texture" id=9]
+[ext_resource path="res://assets/credits/ivy/video_00001.png" type="Texture" id=10]
+[ext_resource path="res://assets/credits/ivy/video_00002.png" type="Texture" id=11]
+[ext_resource path="res://assets/credits/bob/video_00002.png" type="Texture" id=12]
+[ext_resource path="res://assets/credits/bob/video_00003.png" type="Texture" id=13]
+[ext_resource path="res://assets/credits/ivy/video_00003.png" type="Texture" id=14]
+[ext_resource path="res://assets/credits/bob/video_00001.png" type="Texture" id=15]
+
+[sub_resource type="DynamicFont" id=1]
+size = 70
+font_data = ExtResource( 2 )
+
+[sub_resource type="Environment" id=2]
+background_mode = 1
+background_energy = 0.0
+ambient_light_energy = 0.0
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 15 ), ExtResource( 12 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="title" type="Spatial"]
+script = ExtResource( 3 )
+
+[node name="vamps" type="Spatial" parent="."]
+
+[node name="vamp" type="Sprite3D" parent="vamps"]
+shaded = true
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.54744 )
+
+[node name="Control" type="Control" parent="."]
+margin_left = -120.0
+margin_top = 32.0
+margin_right = -80.0
+margin_bottom = 72.0
+
+[node name="start" type="Button" parent="Control"]
+margin_left = 136.0
+margin_top = 280.0
+margin_right = 441.0
+margin_bottom = 353.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "START GAME"
+
+[node name="tutorial" type="Button" parent="Control"]
+margin_left = 136.0
+margin_top = 376.0
+margin_right = 373.0
+margin_bottom = 449.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "TUTORIAL"
+
+[node name="credits" type="Button" parent="Control"]
+margin_left = 136.0
+margin_top = 472.0
+margin_right = 334.0
+margin_bottom = 545.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "CREDITS"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )
+
+[node name="SpotLight" type="SpotLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.394503, 0.918895, 0, -0.918895, 0.394503, 0.72383, 3.00478, 0.764363 )
+light_energy = 4.0
+spot_range = 6.97649
+spot_angle = 40.0531
+
+[node name="tutorial" type="Sprite3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.198 )
+visible = false
+texture = ExtResource( 4 )
+
+[node name="credits" type="Sprite3D" parent="."]
+transform = Transform( 1.345, 0, 0, 0, 1.344, 0, 0, 0, 1, 0, 0, -2.198 )
+visible = false
+texture = ExtResource( 5 )
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="credits"]
+transform = Transform( 0.7, 0, 0, 0, 0.7, 0, 0, 0, 1, -2.41, 1.756, 1 )
+render_priority = 1
+frames = SubResource( 3 )
+playing = true
+
+[node name="AnimatedSprite3D2" type="AnimatedSprite3D" parent="credits"]
+transform = Transform( 0.7, 0, 0, 0, 0.7, 0, 0, 0, 1, 0.104, 1.734, 1 )
+frames = SubResource( 4 )
+frame = 1
+playing = true
+
+[node name="AnimatedSprite3D3" type="AnimatedSprite3D" parent="credits"]
+transform = Transform( 0.7, 0, 0, 0, 0.7, 0, 0, 0, 1, 2.822, 1.69, 1 )
+render_priority = 1
+frames = SubResource( 5 )
+frame = 1
+playing = true
+
+[node name="exit_tutorial" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="exit_tutorial" type="Button" parent="exit_tutorial"]
+margin_left = 8.0
+margin_top = 520.0
+margin_right = 203.0
+margin_bottom = 593.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "RETURN"
+
+[node name="exit_credits" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="exit_credits" type="Button" parent="exit_credits"]
+margin_left = 8.0
+margin_top = 520.0
+margin_right = 203.0
+margin_bottom = 593.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "RETURN"
+
+[connection signal="pressed" from="Control/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Control/tutorial" to="." method="_on_tutorial_pressed"]
+[connection signal="pressed" from="Control/credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="exit_tutorial/exit_tutorial" to="." method="_on_exit_tutorial_pressed"]
+[connection signal="pressed" from="exit_credits/exit_credits" to="." method="_on_exit_credits_pressed"]

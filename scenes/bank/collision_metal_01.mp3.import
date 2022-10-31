@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/collision_metal_01.mp3-fd139a1c90de05f0e1ae4bce1fe23deb.mp3str"
+
+[deps]
+
+source_file="res://scenes/bank/collision_metal_01.mp3"
+dest_files=[ "res://.import/collision_metal_01.mp3-fd139a1c90de05f0e1ae4bce1fe23deb.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
